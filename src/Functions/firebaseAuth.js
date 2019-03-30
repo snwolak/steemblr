@@ -7,9 +7,9 @@ const firebaseAuth = async () => {
     .auth()
     .signInWithCustomToken(localStorage.getItem("googleToken"))
     .catch(function(error) {});
-  defaultApp.auth().onAuthStateChanged(function(user) {
+  await defaultApp.auth().onAuthStateChanged(user => {
     if (user) {
-      store.dispatch(getLoggedProfile(user));
+      return store.dispatch(getLoggedProfile(user));
     } else {
       // No user is signed in.
     }

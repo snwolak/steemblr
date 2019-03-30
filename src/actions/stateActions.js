@@ -82,6 +82,7 @@ export const changeLoginStatus = props => dispatch => {
   });
 };
 export const getLoggedProfile = props => dispatch => {
+  store.dispatch(changeLoginStatus({ token: props._lat }));
   return dispatch({
     type: PROFILE_GET,
     payload: props
