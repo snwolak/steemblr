@@ -97,15 +97,13 @@ class App extends Component {
     };
   }
   async componentDidMount() {
-    if (this.state.googleToken === "firebase") {
-      await defaultApp.auth().onAuthStateChanged(user => {
-        if (user.displayName !== null) {
-          this.handleEmailLogin(user);
-          this.props.getLoggedProfile(user);
-          this.props.getFollowing();
-        }
-      });
-    }
+    await defaultApp.auth().onAuthStateChanged(user => {
+      if (user.displayName !== null) {
+        this.handleEmailLogin(user);
+        this.props.getLoggedProfile(user);
+        this.props.getFollowing();
+      }
+    });
 
     if (this.state.steemToken) {
       Promise.all([
