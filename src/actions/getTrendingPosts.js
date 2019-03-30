@@ -3,7 +3,7 @@ import store from "../store";
 import { GET_TRENDING_POSTS } from "./types";
 const getTrendingPosts = props => async dispatch => {
   const oldState = store.getState().steemPosts.posts;
-  const nsfw = store.getState().userSettings.isNSFWAllowed;
+  const nsfw = store.getState().userSettings.isFetchingNSFWAllowed;
   if (nsfw === false) {
     let bucket = [];
     let timestamp = [];

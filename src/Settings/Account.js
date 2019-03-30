@@ -47,16 +47,24 @@ const SaveBtn = styled.button`
 `;
 class Account extends Component {
   state = {
-    isNSFWAllowed: !this.props.userSettings.isNSFWAllowed
+    isNSFWAllowed: !this.props.userSettings.isNSFWAllowed,
+    isFetchingNSFWAllowed: this.props.userSettings.isFetchingNSFWAllowed
   };
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
-
-    const props = {
-      property: "isNSFWAllowed",
-      value: !event.target.checked
-    };
-    this.props.editUserSettings(props);
+    if (name === "isNSFWAllowed") {
+      const props = {
+        property: name,
+        value: !event.target.checked
+      };
+      this.props.editUserSettings(props);
+    } else {
+      const props = {
+        property: name,
+        value: event.target.checked
+      };
+      this.props.editUserSettings(props);
+    }
   };
   save = async () => {
     await saveUserSettings();
@@ -79,7 +87,24 @@ class Account extends Component {
               }
               label="Safe mode"
             />
-            <p>Hides adult content from app.</p>
+            <p>Hides adult content behind overlay.</p>
+          </span>
+        </Option>
+        <Option>
+          <b>Fetching</b>
+          <span>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={this.state.isFetchingNSFWAllowed}
+                  color="primary"
+                  value="isFetchingNSFWAllowed"
+                  onChange={this.handleChange("isFetchingNSFWAllowed")}
+                />
+              }
+              label="Loading NSFW Content"
+            />
+            <p>Loading adult content to the app.</p>
           </span>
         </Option>
         <SaveBtn onClick={this.save}>Save</SaveBtn>
