@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "draft-convert": "^2.1.4",
-    "firebase": "^5.8.5",
+    "firebase": "^5.9.2",
     "font-picker-react": "^2.3.0",
     "history": "^4.7.2",
     "image-compressor.js": "^1.1.4",
@@ -41,7 +41,7 @@
     "redux-thunk": "^2.2.0",
     "remarkable": "^1.7.1",
     "sanitize-html": "^1.20.0",
-    "sc2-sdk": "^1.0.2",
+    "sc2-sdk": "^2.0.1",
     "steem": "^0.7.4",
     "styled-components": "^4.1.3"
   },
